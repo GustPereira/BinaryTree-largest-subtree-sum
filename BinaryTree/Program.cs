@@ -48,8 +48,7 @@ public class BinaryTree
         if (left != right)        
             return 1;
 
-        int currSum = FindSubTree(Tree.left)
-                            + FindSubTree(Tree.right)+1;
+        int currSum = left + right + 1;
 
         MaxScore = Math.Max(MaxScore, currSum);
 
