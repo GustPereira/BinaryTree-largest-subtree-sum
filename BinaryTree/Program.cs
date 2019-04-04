@@ -22,12 +22,11 @@ public class BinaryTree
         }
     };
 
-
+    /// Start search
     public static int FindMaxScore(Tree Tree) {
+        
         if (Tree == null)
-        {
             return 0;
-        }
 
         FindSubTree(Tree);
 
@@ -36,26 +35,27 @@ public class BinaryTree
     
     public static int FindSubTree(Tree Tree)
     {
-        
         if (Tree == null)
-        {
             return 0;
-        }
 
         int left = FindSubTree(Tree.left);
         int right = FindSubTree(Tree.right);
 
+        // check if children nodes are equal
+        // if not return value just for hits node
         if (left != right)        
             return 1;
 
+        // sum all children values and this node
         int currSum = left + right + 1;
 
+        // check new score
         MaxScore = Math.Max(MaxScore, currSum);
 
         return currSum;
     }
 
-    // Driver Code 
+    // Initialize Code 
     public static void Main(string[] args)
     {
    
@@ -72,9 +72,7 @@ public class BinaryTree
         tree.right.right.right.left = new Tree(11);
 
         if (tree == null)
-        {
            Console.WriteLine(0);
-        }
 
         Console.WriteLine(FindMaxScore(tree));
         Console.ReadLine();
